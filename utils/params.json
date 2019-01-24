@@ -1,0 +1,37 @@
+{
+	"train" : {
+		"words_per_epoch" : 16000,
+		"val_split" : 0.2,
+		"conv_filters" : 16,
+		"kernel_size" : [3,3],
+		"pool_size" : 2,
+		"time_dense_size" : 32,
+		"rnn_size" : 512,
+		"minibatch_size" : 32,
+		"sgd" : {
+			"lr" : 0.02,
+			"decay" : 1e-6,
+			"momentum" : 0.9,
+			"nesterov" : true,
+			"clipnorm" : 5
+		}
+	},
+	"data_generator" : {
+		"img_w" : [128, 56],
+		"img_h" : 64,
+		"monogram_file" : "wordlist_mono_clean.txt",
+		"bigram_file" : "wordlist_bi_clean.txt",
+		"absolute_max_string_len" : 16,
+		"word_list_num" : [16000, 32000]
+	},
+	"utils" : {
+		"train_step" : [0, 20, 25],
+		"regex" : "^[a-z ]+$",
+		"alphabet" : "abcdefghijklmnopqrstuvwxyz ",
+		"output_dir" : "image_ocr",
+		"save_file_format" : "weights%02d.h5",
+		"seed" : 5,
+		"name_format" : "%Y:%m:%d:%H:%M:%S"
+	}
+}
+
