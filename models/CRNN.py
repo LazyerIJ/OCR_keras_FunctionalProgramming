@@ -9,6 +9,7 @@ from keras.layers.recurrent import GRU
 from keras.optimizers import SGD
 from keras import backend as K
 from utils.helpers import params_train, params_data, params_utils
+from utils.helpers import ctc_lambda_func
 
 class modelCRNN():
 

@@ -134,3 +134,11 @@ def decode_batch(test_func, word_batch):
         outstr = labels_to_text(out_best)
         ret.append(outstr)
     return ret
+
+def ctc_lambda_func(self, args):
+        y_pred, labels, input_length, label_length = args
+        # the 2 is critical here since the first couple outputs of the RNN
+        # tend to be garbage:
+        y_pred = y_pred[:, 2:, :]
+        return K.ctc_batch_cost(labels, y_pred, input_length, label_length)
+
