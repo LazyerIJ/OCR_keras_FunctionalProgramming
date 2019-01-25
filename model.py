@@ -37,10 +37,10 @@ class Model():
         print(self.model.crnn.summary())
         print('\n')
 
-    def load_weights(self, weight_file):
+    def load_weights(self, start_epoch):
         file = os.path.join(self.output_dir,
-                            os.path.join(self.name,self.save_format%(start - 1)))
-        self.model.load_weights(file)
+                            os.path.join(self.name,self.save_format%(start_epoch - 1)))
+        self.model.crnn.load_weights(file)
 
     def fit(self):
 
@@ -54,7 +54,7 @@ class Model():
             self.init_model(input_shape)
 
             if load_weight:
-                self.load_weights()
+                self.load_weights(start_epoch)
 
 
             self.model.crnn.fit_generator(
